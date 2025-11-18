@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/colores.dart';
+import 'package:flutter_application_1/components/item_tasca.dart';
 
 class PantallaTasquesPetita extends StatefulWidget {
   const PantallaTasquesPetita({super.key});
@@ -12,6 +13,7 @@ class _MyWidgetState extends State<PantallaTasquesPetita> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colores.principal,
       appBar: AppBar(
         title: const Text('APP Tasques - Pantalla Petita',style: TextStyle(color: Color.fromARGB(255, 20, 48, 1)),),
         backgroundColor: Colores.app,
@@ -25,37 +27,68 @@ class _MyWidgetState extends State<PantallaTasquesPetita> {
           ),
         ],
       ),
-      body: Center(
-        child: const Text('Pantalla Tasques Petita'),
-      ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(bottom: 16, left: 16),
-            child: FloatingActionButton(
-              onPressed: () {
-                // Acción del primer botón
-                print('Primer botón presionado');
-              },
-              child: const Icon(Icons.add),
-              backgroundColor: Colors.blue,
-              shape: CircleBorder(),
-              
+      body: Column(
+        children: [
+          Container(
+            width: double.infinity,
+            height: 5,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.transparent,
+                  Colors.black,
+                ],
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black26,
+                  blurRadius: 4,
+                  offset: Offset(0, 2),
+                ),
+              ]
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 16, right: 16),
-            child: FloatingActionButton(
-              onPressed: () {
-                // Acción del segundo botón
-                print('Segundo botón presionado');
+          Expanded(
+            child: ListView.builder(
+              itemCount: 20,
+              itemBuilder: (context, Index) {
+                return ItemTasca(
+                  valorText: Index.toString(),
+                );
+                
               },
-              child: const Icon(Icons.edit),
-              backgroundColor: Colors.green,
-              shape: CircleBorder(),
-            ),
+              
+                
+              ),
+          ),
+          Text("Pantalla Petita", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+          
+        ],
+      ),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          FloatingActionButton(
+            onPressed: () {
+              // Acción del primer botón
+              print('Primer botón presionado');
+            },
+            child: const Icon(Icons.add),
+            backgroundColor: Colores.secundario,
+            shape: CircleBorder(),
             
+          ),
+          SizedBox(height: 16), // Espacio entre los botones
+          FloatingActionButton(
+            onPressed: () {
+              // Acción del segundo botón
+              print('Segundo botón presionado');
+            },
+            child: const Icon(Icons.edit),
+            backgroundColor: Colors.green,
+            shape: CircleBorder(),
           ),
         ],
         

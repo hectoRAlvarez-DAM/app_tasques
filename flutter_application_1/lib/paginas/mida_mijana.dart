@@ -11,8 +11,8 @@ class _MyWidgetState extends State<MidaMijana> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(
-        child: Text('Mida Mijana'),
+      body: Column(
+        
       ),
     );
   }
