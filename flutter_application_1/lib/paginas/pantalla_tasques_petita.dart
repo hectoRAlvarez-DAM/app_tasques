@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/colores.dart';
+import 'package:flutter_application_1/components/dialog_novaTasca.dart';
 import 'package:flutter_application_1/components/item_tasca.dart';
 
 class PantallaTasquesPetita extends StatefulWidget {
@@ -72,8 +73,7 @@ class _MyWidgetState extends State<PantallaTasquesPetita> {
         children: <Widget>[
           FloatingActionButton(
             onPressed: () {
-              // Acción del primer botón
-              print('Primer botón presionado');
+              obreDialogNovaTasca(context);
             },
             child: const Icon(Icons.add),
             backgroundColor: Colores.secundario,
@@ -93,6 +93,14 @@ class _MyWidgetState extends State<PantallaTasquesPetita> {
         ],
         
       ),
+    );
+  }
+  void obreDialogNovaTasca(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return DialogNovatasca();
+      },
     );
   }
 }
